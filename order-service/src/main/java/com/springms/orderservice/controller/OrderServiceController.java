@@ -3,15 +3,22 @@ package com.springms.orderservice.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.springms.orderservice.entities.Order;
+import com.springms.orderservice.helper.OrderHelper;
 
 @RestController
 public class OrderServiceController {
  
     @Autowired
-    Environment environment;
+    private Environment environment;
+    
+    @Autowired
+    private OrderHelper helper;
  
     @GetMapping("/")
     public String health() {
@@ -38,5 +45,11 @@ public class OrderServiceController {
  
         return "Sorry backend URL is not working and you are seeing a Fallback Response!! " + " Host : localhost " + " :: Port : " + serverPort;
     	
+    }
+    
+    @PostMapping("/placeorder")
+    public String placeOrder(@RequestBody Order orderReq) {
+    	String response = helper.placeOrder(orderReq);
+    	return response;
     }
 }
