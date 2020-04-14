@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Microservices - Login</title>
+		<meta name="robots" content="noindex, nofollow">
+		
+		<!-- Include CSS File Here -->
+		<link rel="stylesheet" href="css/style.css" />
+		
+		<!-- Include CSS File Here -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="main">
+				<form class="form" method="POST" id="loginForm" name="loginForm" action="doLogin">
+					<h2>Login Form</h2>
+					<label>Username :</label> 
+						<input type="text" name="username" id="username" required>
+					<label>Password :</label> 
+						<input type="password" name="password" id="password" required> 
+					
+					<input type="button" name="loginBtn" id="loginBtn" value="Login">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
