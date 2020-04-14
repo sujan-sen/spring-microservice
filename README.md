@@ -1,17 +1,16 @@
 # spring-microservice
  This code base will contain a demo for integration with Spring Boot, Microservice, Eureka, Zuul, Ribon, Security
 
-******Service & Ports *******
+### Service & Ports
 discovery-service runs on port 8000
 gateway-service runs on port 9000
 rest are dynamically generated(port 0)
 
-******Oauth Config*******
+### OAuth Config
 oauth-token can be obtained by the following curl
 curl test-client:test123@localhost:8080/oauth/token -dgrant_type=client_credentials -dscope=any
 
-
-*******Kafka Config********
+### Kafka Config
 1. Start the ZooKeeper Server.... 
 bin/zookeeper-server-start.sconfig/zookeeper.properties
 2. Start the Kafka Server....
@@ -22,7 +21,7 @@ bin/kafka-server-start.sh config/server.properties
 4. Validate the Topics:
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
-******Database Config**********
+### Database Config
 1. Create Schemas in MYSQL DB order_schema & credit_schema
 2. CREATE TABLE `credit_schema`.`credit_master` (
   `user_id` int NOT NULL AUTO_INCREMENT,
@@ -41,5 +40,10 @@ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
   PRIMARY KEY (`order_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-******* SAGA Config*******
+### SAGA Config
 https://microservices.io/patterns/data/saga.html
+
+### To-Do
+1. Web module service added. It will run on localhost:8888. On hitting this url, the system should display a login page.
+1. We need to plug-in an authentication service call to first authenticate the credentials and then generate the token.
+1. Once it is done, we should navigate the user to /home.
